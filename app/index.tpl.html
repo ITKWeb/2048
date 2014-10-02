@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="shortcut icon" type="image/png" href="<%= favicon %>" />
+    <% styles.forEach( function ( file ) { %>
+      <link rel="stylesheet" type="text/css" href="<%= file %>" />
+    <% }); %>
+    <title><%= title %></title>
+  </head>
+  <body ng-app="app">
+
+  <noscript>
+    <h1><%= nojs_sentence %></h1>
+  </noscript>
+
+	<div class="ngview" ng-view></div>
+
+    <% scripts.forEach( function ( file ) { %>
+      <script type="text/javascript" src="<%= file %>"></script>
+    <% }); %>
+
+  </body>
+</html> 

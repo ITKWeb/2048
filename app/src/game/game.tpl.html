@@ -1,3 +1,31 @@
-<div class="gameContainer"> 
+<div class="container"> 
+	<div class="header">
+		<h1> 2048 </h1> 
+		<div class="scores-container">
+			<div class="score-container"> 
+				<h4> {{'score' | i18n}} </h4>
+				<h3> 0 </h3>
+			 </div>
+			 <div class="score-container"> 
+				<h4> {{'best' | i18n}} </h4>
+				<h3> 0 </h3>
+			 </div>		
+		</div>
+	</div>
+
+	<div class="game-controls">
+		<h2> {{'title' | i18n}} <h2>
+		<div class="button"> {{'play' | i18n}} </div>
+	</div>
+
+	<div class="game-grid">
+		<div class ="pure-g grid-row" ng-repeat="x in game.grid">
+			<div class="pure-u-1-4 grid-cell" ng-repeat="elem in game.grid">	
+				<a ng-show="game.grid[$index][$parent.$index].value !== -1">{{game.grid[$index][$parent.$index].value}}</a>		
+			</div>
+		</div>
+
+	</div>
+
 
 </div>

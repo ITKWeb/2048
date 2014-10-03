@@ -5,7 +5,6 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-concat');  
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -142,25 +141,7 @@ module.exports = function ( grunt ) {
         '<%= app_files.stylesheet %>',
         '<%= test_files.js %>'
       ],
-      tasks: ['jshint', 'karma:build:run', 'build']
-    },
-
-    karma: {
-      options: {
-        configFile: 'karma.conf.js'
-      },
-      build: {
-        options: {
-          runnerPort: 9100,
-          autoWatch: false,
-          background: true,
-          singleRun: false
-        }
-      },
-      compile: {
-        singleRun: true,
-        background: false
-      }
+      tasks: ['jshint', 'build']
     },
 
     jshint: {
@@ -273,14 +254,14 @@ module.exports = function ( grunt ) {
 
   grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build' ] );
   
-  grunt.registerTask( 'compile', [ 'jshint', 'karma:compile:start', 'build', 'ngtemplates', 'concat:compile_js', 'concat:compile_css', 'uglify:compile', 'cssmin:compile', 'copy:compile', 'index:compile', 'autoprefixer', 'htmlmin:compile' ] );
+  grunt.registerTask( 'compile', [ 'jshint', 'build', 'ngtemplates', 'concat:compile_js', 'concat:compile_css', 'uglify:compile', 'cssmin:compile', 'copy:compile', 'index:compile', 'autoprefixer', 'htmlmin:compile' ] );
 
   grunt.registerTask( 'compile-dev', [ 'compile', 'connect:compile:keepalive' ] );
 
   grunt.registerTask( 'compile-image-embed', [ 'compile', 'imageEmbed' ] );
 
-  grunt.registerTask( 'dev', [ 'jshint', 'build', 'connect:build', 'karma:build:start', 'watch' ] );
-  grunt.registerTask( 'devNoServer', [ 'jshint', 'build', 'karma:build:start', 'watch' ] );
+  grunt.registerTask( 'dev', [ 'jshint', 'build', 'connect:build', 'watch' ] );
+  grunt.registerTask( 'devNoServer', [ 'jshint', 'build', 'watch' ] );
 
   grunt.registerTask( 'default', [ 'build'] );
 

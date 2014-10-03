@@ -5,11 +5,11 @@ angular.module('app').factory('i18nService', [
 
     var currentLang = 'fr';
     var translations = { fr: {}, en:{}};
-
-    /************************\
-    |* HEADER VIEW          *|
-    \************************/
-    translations.fr.APP_TITLE = '2048';
+ 
+    translations.fr.score = 'score';
+    translations.fr.best = 'Meilleur';
+    translations.fr.title = 'Venez vous essayer au 2048!';
+    translations.fr.play = 'Jouer';
     
 
     return {
